@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>主查询</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <span>服务器核心数:</span>
+    <span ref="maxcore" v-if="seen" th:text="${maxcore}"></span>
+    <p th:text="请输入查询"></p>
+    <textarea ref='areaMain' v-bind:class="classObjects" placeholder="输入查询代码">
+
+    </textarea>
+    <input type="button" value="查询" v-on:click="query()"/>
+</div>
+</body>
+</html>
+<script type="application/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'xiaoliwen',
+            seen: true,
+            classObjects:{
+                comments: true
+            }
+        },
+        methods: {
+            query: function () {
+                var maxCore = this.$refs.maxcore.innerHTML;
+
+            }
+        }
+
+
+    })
+</script>
+<style type="text/css">
+    .comments {
+        width: 100%; /*自动适应父布局宽度*/
+        overflow: auto;
+        word-break: break-all;
+    }
+</style>

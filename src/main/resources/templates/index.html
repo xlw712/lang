@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HelloWorld</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    </br>
+    <span v-bind:title="message">鼠标悬浮</span>
+
+    <span v-if="seen">是否可见</span>
+
+    <p>{{message}}</p>
+    <button v-on:click="reverseMethod">逆转消息</button>
+    <!--组件-->
+    <todo-item id="app1"></todo-item>
+</div>
+</body>
+</html>
+<script type="application/javascript">
+    Vue.component('todo-item', {
+        props:['todo'],
+        template: '<ol><li>这是个待办项</li></ol>'
+    })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            seen:true
+        },
+        methods:{
+            reverseMethod:function (e) {
+                console.info(e)
+                this.message=this.message.split('').reverse().join('');
+
+            }
+        }
+    })
+
+</script>
