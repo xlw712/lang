@@ -1,4 +1,4 @@
-package com.levin.lang.dto;
+package com.levin.lang.login.dto;
 
 import java.util.Date;
 
@@ -40,7 +40,6 @@ public class TbUser {
      * This method returns the value of the database column tb_user.id
      *
      * @return the value of tb_user.id
-     *
      * @mbggenerated
      */
     public Integer getId() {
@@ -52,7 +51,6 @@ public class TbUser {
      * This method sets the value of the database column tb_user.id
      *
      * @param id the value for tb_user.id
-     *
      * @mbggenerated
      */
     public void setId(Integer id) {
@@ -64,7 +62,6 @@ public class TbUser {
      * This method returns the value of the database column tb_user.username
      *
      * @return the value of tb_user.username
-     *
      * @mbggenerated
      */
     public String getUsername() {
@@ -76,7 +73,6 @@ public class TbUser {
      * This method sets the value of the database column tb_user.username
      *
      * @param username the value for tb_user.username
-     *
      * @mbggenerated
      */
     public void setUsername(String username) {
@@ -88,7 +84,6 @@ public class TbUser {
      * This method returns the value of the database column tb_user.age
      *
      * @return the value of tb_user.age
-     *
      * @mbggenerated
      */
     public Integer getAge() {
@@ -100,7 +95,6 @@ public class TbUser {
      * This method sets the value of the database column tb_user.age
      *
      * @param age the value for tb_user.age
-     *
      * @mbggenerated
      */
     public void setAge(Integer age) {
@@ -112,7 +106,6 @@ public class TbUser {
      * This method returns the value of the database column tb_user.ctm
      *
      * @return the value of tb_user.ctm
-     *
      * @mbggenerated
      */
     public Date getCtm() {
@@ -124,10 +117,19 @@ public class TbUser {
      * This method sets the value of the database column tb_user.ctm
      *
      * @param ctm the value for tb_user.ctm
-     *
      * @mbggenerated
      */
     public void setCtm(Date ctm) {
         this.ctm = ctm;
+    }
+
+    @Override
+    public String toString() {
+        return "TbUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                ", ctm=" + ctm +
+                '}';
     }
 }

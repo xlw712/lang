@@ -1,4 +1,4 @@
-package com.levin.lang.vo;
+package com.levin.lang.login.vo;
 
 public class UserVo {
     private String name;

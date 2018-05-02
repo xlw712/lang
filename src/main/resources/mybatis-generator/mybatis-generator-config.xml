@@ -5,7 +5,7 @@
 <generatorConfiguration>
     <!--用命令构建 mvn mybatis-generator:generate -->
 
-    <properties resource="application-dev.properties"/>
+    <properties resource="mybatis-generator/mybatis-generator.properties"/>
     <!-- 本地数据库驱动程序jar包的全路径 -->
     <classPathEntry location="/opt/maven/repos/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar"/>
 
@@ -27,7 +27,7 @@
         </javaTypeResolver>
 
         <!-- 实体类生成的位置 -->
-        <javaModelGenerator targetPackage="com.levin.lang.dto" targetProject="${mybatis.pojo-path}">
+        <javaModelGenerator targetPackage="com.levin.lang.login.dto" targetProject="${mybatis.pojo-path}">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -38,7 +38,7 @@
         </sqlMapGenerator>
 
         <!-- Mapper 接口Dao文件的位置 -->
-        <javaClientGenerator targetPackage="com.levin.lang.dao" targetProject="${mybatis.pojo-path}" type="XMLMAPPER">
+        <javaClientGenerator targetPackage="com.levin.lang.login.dao" targetProject="${mybatis.pojo-path}" type="XMLMAPPER">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
