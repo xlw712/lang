@@ -29,7 +29,7 @@ public class LoginController {
     private UserService userService;
 
 
-    @RequestMappingvalue = "/hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String welcome(@RequestParam Map<String, String> requestParam, Model model, HttpSession session) {
         session.setAttribute("appId", "spring_01");
         //传参
