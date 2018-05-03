@@ -61,8 +61,7 @@ public class LoginController {
     public String login(@RequestParam Map<String, String> requestParam, Model model, HttpSession session) {
         TbUser user = userService.getUserByName("张三");
         System.out.println(user.toString());
-        model.addAttribute("maxcore", Runtime.getRuntime().availableProcessors());
-        return "main";
+        return "login";
     }
 
     @RequestMapping(value = "/query", method = RequestMethod.GET)
