@@ -57,16 +57,24 @@ public class LoginController {
 
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(@RequestParam Map<String, String> requestParam, Model model, HttpSession session) {
-        TbUser user = userService.getUserByName("张三");
-        System.out.println(user.toString());
-        return "login";
+    @RequestMapping("/")
+    public String root() {
+        return "index";
     }
 
-    @RequestMapping(value = "/query", method = RequestMethod.GET)
-    public String query(@RequestParam Map<String, String> requestParam, Model model, HttpSession session) {
+    @RequestMapping("/index")
+    public String index() {
+        return "index";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(@RequestParam Map<String, String> requestParam, Model model, HttpSession session) {
         model.addAttribute("maxcore", Runtime.getRuntime().availableProcessors());
+        TbUser user = userService.getUserByName("张三");
+        String useranme=requestParam.get("username");
+        String password=requestParam.get("password");
+        System.out.println(useranme);
+        System.out.println(password);
         return "main";
     }
 

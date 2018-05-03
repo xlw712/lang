@@ -1,44 +1,112 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>HelloWorld</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-<div id="app">
-    {{ message }}
-    </br>
-    <span v-bind:title="message">鼠标悬浮</span>
+<head th:include="/common/head::commmonHeader('歡迎訪問')"></head>
+<style>
+    .height_max {
+        height: 100%
+    }
 
-    <span v-if="seen">是否可见</span>
+    .width_max {
+        width: 100%
+    }
 
-    <p>{{message}}</p>
-    <button v-on:click="reverseMethod">逆转消息</button>
-    <!--组件-->
-    <todo-item id="app1"></todo-item>
+    .head {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .foot {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .el-row {
+        margin-bottom: 20px;
+        margin-left: auto;
+    }
+
+    .login-box {
+        margin-top: 20%;
+        margin-left: 40%;
+    }
+</style>
+<body style="position:absolute;top:0px;left:0px;right:0px;bottom:0px;padding:0;margin: 0;">
+<div id="login" class="height_max width_max">
+    <el-container class="height_max width_max">
+        <el-header class="head">
+            1
+        </el-header>
+        <el-main class="height_max">
+            <div style="position:relative;left:30%;top:35%;">
+                <el-row>
+                    <el-col :span="8">
+                        <el-input id="name" v-model="name" placeholder="请输入帐号">
+                            <template slot="prepend">帐号</template>
+                        </el-input>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-input id="password" v-model="password" type="password" placeholder="请输入密码">
+                            <template slot="prepend">密码</template>
+                        </el-input>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-button id="login" v-on:click="login" style="width:100%" type="primary">登录</el-button>
+                    </el-col>
+                </el-row>
+            </div>
+        </el-main>
+        <el-footer class="foot">
+            3
+        </el-footer>
+    </el-container>
 </div>
 </body>
-</html>
 <script type="application/javascript">
-    Vue.component('todo-item', {
-        props:['todo'],
-        template: '<ol><li>这是个待办项</li></ol>'
-    })
     var app = new Vue({
-        el: '#app',
+        el: '#login',
         data: {
-            message: 'Hello Vue!',
-            seen:true
+            name: '',
+            password: ''
         },
-        methods:{
-            reverseMethod:function (e) {
-                console.info(e)
-                this.message=this.message.split('').reverse().join('');
+        methods: {
+            login: function (event) {
+                var name = this.name;
+                var password = this.password;
+                if (name == '' || password == '') {
+                    this.$message({
+                        message: '账号或密码为空',
+                        type: 'error'
+                    })
+                    return;
+                }
+                axios.get('/login', {
+                    params: {
+                        username: name,
+                        password: password
+                    }
+                })
+                .then(function (response) {
+                    console.log(response);
+                    location.href = "/monitor"
+                })
+                .catch(function (response) {
+                    console.log(response);
+                });
 
+            }, onSubmit: function () {
+                console.info(11)
             }
         }
-    })
 
+
+    })
 </script>
+
+</html>
